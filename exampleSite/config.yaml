@@ -277,19 +277,20 @@ params:
   # Achievements
   achievements:
     enable: true
-    title: "Certificate"
+    title: "Certificates"
     items:
-      - title: Google kickstart runner
-        content: I solved all problems with optimal solution.
-        url: https://example.com
-        image: /images/achievment.jpg
-      - title: Facebook Hackathon Winner
-        content: Developed a product using Artificial Intelligence.
-        image: /images/achievment.jpg
-      - title: Hugo Profile
-        content: Developed a theme and getting 1K+ downloads per month.
-        url: "https://github.com/gurusabarish/hugo-profile"
-        image: /images/achievment.jpg
+      - title: Dicoding
+        content: Belajar Membuat Front-End Web untuk Pemula.
+        url: https://www.dicoding.com/certificates/EYX4927O6PDL
+        image: /images/dicoding.jpg
+      - title: Dicoding
+        content: Belajar Dasar Pemrograman Web.
+        url: https://www.dicoding.com/certificates/1RXYOYQ59PVM
+        image: /images/dicoding.jpg
+      - title: Dicoding
+        content: Belajar Dasar Pemrograman JavaScript.
+        url: https://www.dicoding.com/certificates/0LZ01W79QP65
+        image: /images/dicoding.jpg
       - title: Microsoft Imagine Runner
         content: We are developed a product which can help others.
       - title: Google Summer of Code

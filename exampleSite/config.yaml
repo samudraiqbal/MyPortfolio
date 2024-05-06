@@ -1,6 +1,6 @@
-baseURL: "https://hugo-profile.netlify.app"
+baseURL: "https://miqbalsamudra.netlify.app/"
 languageCode: "en-us"
-title: "Hugo Profile"
+title: "My Portfolio"
 theme: hugo-profile
 
 outputs:
@@ -23,17 +23,17 @@ markup:
       unsafe: true
 
 Menus:
-  main:
-    - identifier: blog
-      name: Blog
-      title: Blog posts
-      url: /blogs
-      weight: 1
-    - identifier: gallery
-      name: Gallery
-      title: Blog posts
-      url: /gallery
-      weight: 2
+  # main:
+  #   - identifier: blog
+  #     name: Blog
+  #     title: Blog posts
+  #     url: /blogs
+  #     weight: 1
+  #   - identifier: gallery
+  #     name: Gallery
+  #     title: Blog posts
+  #     url: /gallery
+  #     weight: 2
     #Dropdown menu
     # - identifier: dropdown
     #   title: Example dropdown menu
@@ -53,7 +53,7 @@ Menus:
     #   weight: 2
 
 params:
-  title: "Hugo Profile"
+  title: "My Portfolio"
   description: Text about my cool site
   # staticPath: ""  # The path to serve the static files from
   favicon: "/fav.png"
@@ -106,7 +106,7 @@ params:
     align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
     # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
     # showBrandLogo: false # Show brand logo in nav bar | default is true
-    brandName: "Hugo Profile" # Brand name for the brand | default is the title variable
+    brandName: "My Portfolio" # Brand name for the brand | default is the title variable
     disableSearch: false
     # searchPlaceholder: "Search"
     stickyNavBar:
@@ -124,7 +124,7 @@ params:
   hero:
     enable: true
     intro: "Hi, my name is"
-    title: "Isabella."
+    title: "M Iqbal Samudra."
     subtitle: "I build things for the web"
     content: "A passionate web app developer. I tend to make use of modern web technologies to build websites that looks great, feels fantastic, and functions correctly."
     image: /images/hero.svg
@@ -140,12 +140,11 @@ params:
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-github
-          url: https://example.com
-        - icon: fab fa-x-twitter
-          url: https://example.com
-      customIcons:
-        - icon: /fav.png
-          url: "https://example.com"
+          url: https://github.com/samudraiqbal
+        - icon: fab fa-linkedin-in
+          url: https://www.linkedin.com/in/miqbalsamudra/
+        - icon: fa-solid fa-envelope
+          url: mailto:miqbalsamudra@gmail.com
 
   # About
   about:
@@ -278,7 +277,7 @@ params:
   # Achievements
   achievements:
     enable: true
-    # title: "Custom Name"
+    title: "Certificate"
     items:
       - title: Google kickstart runner
         content: I solved all problems with optimal solution.

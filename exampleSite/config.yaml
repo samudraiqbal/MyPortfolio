@@ -279,23 +279,34 @@ params:
     enable: true
     title: "Certificates"
     items:
-      - title: Dicoding
-        content: Belajar Membuat Front-End Web untuk Pemula.
-        url: https://www.dicoding.com/certificates/EYX4927O6PDL
+      - title: Coding.ID
+        content: Bootcamp Quality Assurance Engineer
+        url: https://coding.id/report/xLYW35oy
+        image: /images/codingid.jpg
+      - title: Baparekraf Digital Talent Tahun 2022
+        content: Android Developer Dasar
+        url: https://drive.google.com/file/d/1qnQ6zkMymw5Y84AuwFYQAH5xh7b8t8fD/view?usp=sharing
+        image: /images/bdd.png
+      - title: Dicoding Academy
+        content: Belajar Membuat Aplikasi Android untuk Pemula
+        url: https://www.dicoding.com/certificates/JLX1L2GKGX72
         image: /images/dicoding.jpg
-      - title: Dicoding
-        content: Belajar Dasar Pemrograman Web.
-        url: https://www.dicoding.com/certificates/1RXYOYQ59PVM
+      - title: Dicoding Academy
+        content: Memulai Pemrograman Dengan Kotlin
+        url: https://www.dicoding.com/certificates/81P2835YQPOY
         image: /images/dicoding.jpg
-      - title: Dicoding
-        content: Belajar Dasar Pemrograman JavaScript.
+      - title: Dicoding Academy
+        content: Belajar Dasar Pemrograman JavaScript
         url: https://www.dicoding.com/certificates/0LZ01W79QP65
         image: /images/dicoding.jpg
-      - title: Microsoft Imagine Runner
-        content: We are developed a product which can help others.
-      - title: Google Summer of Code
-        content: Contributed to a open source project.
-        url: https://example.com
+      - title: Dicoding Academy
+        content: Belajar Dasar Pemrograman Web
+        url: https://www.dicoding.com/certificates/1RXYOYQ59PVM
+        image: /images/dicoding.jpg
+      - title: Dicoding Academy
+        content: Belajar Membuat Front-End Web untuk Pemula
+        url: https://www.dicoding.com/certificates/EYX4927O6PDL
+        image: /images/dicoding.jpg
 
   # projects
   projects:

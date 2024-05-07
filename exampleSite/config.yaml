@@ -152,7 +152,7 @@ params:
     title: "About Me"
     image: "/images/me.png"
     content: |-
-      I am a software developer with a passion for web development. I have a background in computer science and mathematics, and I have a strong interest in the intersection of technology and art. I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA. 
+      I am a software developer with a passion for web development. I am a graduate of Binus University with a major in Information Systems and SMK Telkom Malang with a major in Software Engineering.
 
       I am currently working on a project that will be used to help people find the best way to get around the city.
     skills:
@@ -237,42 +237,38 @@ params:
     # title: "Custom Name"
     index: false
     items:
-      - title: "Master of Business Administration"
+      - title: "Bachelor's Degree in Information Systems"
         school:
-          name: "University of California, Berkeley"
-          url: "https://example.org"
-        date: "2013 - 2015"
-        GPA: "3.8 out of 5.0"
-        content: |-
-          Extracurricular Activities
-            - Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
-      - title: "Bachelor of Science in Computer Science"
+          name: "BINUS University"
+          url: "https://binus.ac.id/"
+        date: "2019 - 2022"
+        GPA: "3.74 out of 4.0"
+        # content: |-
+        #   Extracurricular Activities
+        #     - Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        #     - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
+        featuredLink:
+          enable: true
+          name: "My graduate certificate"
+          url: "https://digitalsignstorage.file.core.windows.net/prod/prod/finalFile/BNS01/68/2301930671/CRT1_119161_2301930671.pdf?sv=2020-08-04&se=2024-05-17T10%3A34%3A37Z&sr=f&sp=r&sig=Jy2i9GzTnRmy5zF%2FTGOpQdlgDa2gwnD2OET7DsiQG6A%3D"
+      - title: "Software Engineering"
         school:
-          name: "Massachusetts Institute of Technology"
-          url: "https://example.org"
-        date: "2009 - 2013"
-        GPA: "3.9 out of 5.0"
-        content: |-
-          I Publiced two papers in the ACM SIGCHI Conference on Artificial Intelligence.
-          - [Fast and Accurate Object Detection with a Single Convolutional Neural Network](https://example.com)
-          - Face mask detection using a single convolutional neural network.
+          name: "SMK Telkom Malang"
+          url: "https://www.smktelkom-mlg.sch.id/"
+        date: "2015 - 2018"
+        GPA: "3.165 out of 4.0"
+        # content: |-
+        #   I Publiced two papers in the ACM SIGCHI Conference on Artificial Intelligence.
+        #   - [Fast and Accurate Object Detection with a Single Convolutional Neural Network](https://example.com)
+        #   - Face mask detection using a single convolutional neural network.
 
-          Extracurricular Activities
-            - Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
+        #   Extracurricular Activities
+        #     - Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        #     - Tempora esse, eaque delectus nulla quo doloribus itaque expedita alias natus optio totam maxime nihil excepturi velit a animi laborum hic similique.
         featuredLink:
           enable: true
-          name: "My academic record"
-          url: "https://example.com"
-      - title: "High School"
-        school:
-          name: "Thomas Jefferson High School for Science and Technology."
-          url: "https://example.org"
-        GPA: "4.2 out of 5.0"
-        featuredLink:
-          enable: true
-          url: "https://example.com"
+          name: "My graduate certificate"
+          url: "https://drive.google.com/file/d/1EAmddh5hHKLJiv1BBaRC5PSy-1AfmL_A/view?usp=sharing"
 
   # Achievements
   achievements:

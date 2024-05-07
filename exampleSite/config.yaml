@@ -339,6 +339,56 @@ params:
           - "CodeIgniter 3"
           - "Bootstrap"
 
+      - title: Citra Desain Angkasa
+        content: Landing page of the "Citra Desain Angkasa" website about interior design services.
+        image: /images/projects/citradesainangkasa.png
+        featured:
+          name: Demo
+          link: https://citradesainangkasa.xyz/
+        badges:
+          - "CodeIgniter 3"
+          - "Bootstrap"
+
+      - title: Sehat Bahagia Bersatu
+        content: Landing page of the "Sehat Bahagia Bersatu" website about selling car spare parts.
+        image: /images/projects/sehatbahagiabersatu.png
+        featured:
+          name: Demo
+          link: https://sehatbahagiabersatu.xyz/
+        badges:
+          - "CodeIgniter 3"
+          - "Bootstrap"
+
+      - title: Mujur Jaya Pratama
+        content: Landing page of the "Mujur Jaya Pratama" website about selling ornamental plants.
+        image: /images/projects/mujurjayapratama.png
+        featured:
+          name: Demo
+          link: https://mujurjayapratama.xyz/
+        badges:
+          - "CodeIgniter 3"
+          - "Bootstrap"
+
+      - title: Rumah Karya Abadi
+        content: Landing page of the "Rumah Karya Abadi" website about cleaning service providers.
+        image: /images/projects/rumahkaryaabadi.png
+        featured:
+          name: Demo
+          link: https://rumahkaryaabadi.com/
+        badges:
+          - "CodeIgniter 3"
+          - "Bootstrap"
+
+      - title: Untung Mega Sentosa
+        content: Landing page of the "Untung Mega Sentosa" website about selling basic necessities.
+        image: /images/projects/untungmegasentosa.png
+        featured:
+          name: Demo
+          link: https://untungmegasentosa.com/
+        badges:
+          - "CodeIgniter 3"
+          - "Bootstrap"
+
   #Contact
   contact:
     enable: true

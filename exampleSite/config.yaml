@@ -314,44 +314,30 @@ params:
         image: /images/projects/mudahsuksesmandiri.png
         featured:
           name: Demo
-          link: mudahsuksesmandiri.xyz
+          link: https://mudahsuksesmandiri.xyz/
         badges:
           - "CodeIgniter 3"
           - "Bootstrap"
-        # links:
-        #   - icon: fa fa-envelope
-        #     url: mailto:?subject=Hugo%20Profile%20Template&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
-        #   - icon: fab fa-github
-        #     url: https://github.com/gurusabarish/hugo-profile
-        #   - icon: fab fa-twitter
-        #     url: https://twitter.com/intent/tweet?text=Check+it+out:&url=https%3A%2F%2Fgithub.com%2Fgurusabarish%2Fhugo-profile
 
-      - title: Image Converter
-        content: A web app to convert image to pdf, png to jpg, png to jpg and png to webp without database using django.
-        image: /images/projects/converter.jpg
+      - title: Untung Bahagia Abadi
+        content: Landing page of the "Untung Bahagia Abadi" website about selling building materials.
+        image: /images/projects/untungbahagiaabadi.png
         featured:
           name: Demo
-          link: https://django-converter.herokuapp.com
+          link: https://untungbahagiaabadi.xyz/
         badges:
-          - "Django"
+          - "CodeIgniter 3"
           - "Bootstrap"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/converter
 
-      - title: Hugo Profile V2
-        content: A clean and simple Hugo template for personal portfolio and blog.
-        image: /images/projects/profile2.jpg
+      - title: CV Inti Perkasa Networking
+        content: Landing page of the "88Network" site from CV Inti Perkasa Networking about Telemarketing / Agent Recruitment.
+        image: /images/projects/intinet88.png
         featured:
-          name: Demo V2
-          link: https://hugo-profile-2.netlify.app
+          name: Demo
+          link: https://intinet88.xyz/
         badges:
-          - "Hugo"
+          - "CodeIgniter 3"
           - "Bootstrap"
-          - "Javascript"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/gurusabarish/HugoProfileV2
 
   #Contact
   contact:

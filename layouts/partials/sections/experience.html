@@ -8,7 +8,6 @@
                     <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">
                         <script>
                             var companies = {}; // Objek untuk menyimpan perusahaan dan indeksnya
-                            var activeCompany = ''; // Variabel untuk menyimpan perusahaan aktif
                             {{ range $index, $element := .Site.Params.experience.items }}
                                 var company = "{{ .company }}";
                                 if (!companies[company]) { // Jika perusahaan belum ada dalam objek, tambahkan
@@ -16,6 +15,8 @@
                                 }
                                 companies[company].push({ index: {{ $index }} }); // Tambahkan indeks ke dalam array perusahaan
                             {{ end }}
+                            // Variabel untuk menyimpan perusahaan aktif
+                            var activeCompany = Object.keys(companies)[0];
                             // Fungsi untuk menampilkan tab-pane berdasarkan perusahaan yang dipilih
                             function showTabPane(company) {
                                 var panes = document.querySelectorAll('.tab-pane'); // Ambil semua elemen tab-pane

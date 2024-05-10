@@ -21,6 +21,7 @@
                                 {{ .company }}
                             </div>
                         </li>
+                        {{ end }}
                     </ul>
                     <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
                         {{ range $index, $element := .Site.Params.experience.items }}

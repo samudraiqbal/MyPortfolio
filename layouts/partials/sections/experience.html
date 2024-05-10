@@ -6,16 +6,16 @@
             <div class="col-sm-12 col-md-8 col-lg-8 py-5">
                 <div class="experience-container px-3 pt-2">
                     <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">
-                        {{ range $index, $element := .Site.Params.experience.items }}
-                            <script>
-                                var addedCompanies = [];
+                        <script>
+                            var companies = []; // Array untuk menyimpan nama perusahaan
+                            {{ range $index, $element := .Site.Params.experience.items }}
                                 var company = "{{ .company }}";
-                                if (!addedCompanies.includes(company)) {
-                                    addedCompanies.push(company);
-                                    document.write('<li class="nav-item px-1 bg-transparent" role="presentation"><div class="nav-link active bg-transparent" aria-selected="true" role="tab" data-bs-toggle="pill" id="' + company.replace(" ", "-") + '-{{ replace .date " " "-" }}-tab" data-bs-target="#pills-' + company.replace(" ", "-") + '-{{ replace .date " " "-" }}" aria-controls="' + company.replace(" ", "-") + '-{{ replace .date " " "-" }}">' + company + '</div></li>');
+                                if (!companies.includes(company)) { // Cek jika perusahaan belum ditambahkan
+                                    companies.push(company); // Tambahkan perusahaan ke dalam array
+                                    document.write('<li class="nav-item px-1 bg-transparent" role="presentation"><div class="nav-link bg-transparent" aria-selected="false" role="tab" data-bs-toggle="pill" id="' + company.replace(/ /g, "-") + '-tab" data-bs-target="#pills-' + company.replace(/ /g, "-") + '" aria-controls="' + company.replace(/ /g, "-") + '">' + company + '</div></li>');
                                 }
-                            </script>
-                        {{ end }}
+                            {{ end }}
+                        </script>
                     </ul>
                     <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
                         {{ range $index, $element := .Site.Params.experience.items }}

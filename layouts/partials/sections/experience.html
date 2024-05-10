@@ -30,7 +30,7 @@
                         {{ $prevCompany := "" }}
                         {{ range $index, $element := .Site.Params.experience.items }}
                             {{ if ne $prevCompany .company }}
-                                <div class="tab-pane fade show active bg-transparent" role="tabpanel" id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'>
+                                <div class="tab-pane fade{{ if eq $index 0 }} show active{{ end }} bg-transparent" role="tabpanel" id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'>
                                     <div>
                                         <span class="h4">{{ .job }}</span>
                                         <small>-</small>

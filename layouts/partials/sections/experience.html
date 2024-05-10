@@ -12,7 +12,8 @@
                                 var company = "{{ .company }}";
                                 if (!companies.includes(company)) { // Cek jika perusahaan belum ditambahkan
                                     companies.push(company); // Tambahkan perusahaan ke dalam array
-                                    document.write('<li class="nav-item px-1 bg-transparent" role="presentation"><div class="nav-link bg-transparent" aria-selected="false" role="tab" data-bs-toggle="pill" id="' + company.replace(/ /g, "-") + '-tab" data-bs-target="#pills-' + company.replace(/ /g, "-") + '" aria-controls="' + company.replace(/ /g, "-") + '">' + company + '</div></li>');
+                                    var isActive = {{ if eq $index 0 }} "active" {{ else }} "" {{ end }}; // Tambahkan kelas active jika index = 0
+                                    document.write('<li class="nav-item px-1 bg-transparent" role="presentation"><div class="nav-link ' + isActive + ' bg-transparent" aria-selected="false" role="tab" data-bs-toggle="pill" id="' + company.replace(/ /g, "-") + '-tab" data-bs-target="#pills-' + company.replace(/ /g, "-") + '" aria-controls="' + company.replace(/ /g, "-") + '">' + company + '</div></li>');
                                 }
                             {{ end }}
                         </script>

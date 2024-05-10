@@ -28,43 +28,47 @@
                         {{ end }}
                     </ul>
                     <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
+                        {{ $firstTab := true }}
                         {{ range $index, $element := .Site.Params.experience.items }}
                             {{ if eq $element.company $companies }}
-                                <div class="tab-pane fade bg-transparent active show" role="tabpanel" id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'>
-                            {{ else }}
-                                <div class="tab-pane fade bg-transparent" role="tabpanel" id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'>
-                            {{ end }}
-                                <div>
-                                    <span class="h4">{{ .job }}</span>
-                                    <small>-</small>
-                                    <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
-                                    <div class="pb-1">
-                                        <small>{{ .date }}</small>
-                                        {{ if .info.enable | default true }}
-                                        <span class="p-2">
-                                            <span 
-                                                style="cursor: pointer;" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-original-title={{ .info.content | default (print "Working as a " .job " at " .company ) }}
-                                            >
-                                                <i class="fas fa-info-circle fa-xs"></i>
+                                {{ if $firstTab }}
+                                    {{ $firstTab = false }}
+                                    <div class="tab-pane fade bg-transparent active show" role="tabpanel" id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'>
+                                {{ else }}
+                                    <div class="tab-pane fade bg-transparent" role="tabpanel" id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'>
+                                {{ end }}
+                                    <div>
+                                        <span class="h4">{{ .job }}</span>
+                                        <small>-</small>
+                                        <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
+                                        <div class="pb-1">
+                                            <small>{{ .date }}</small>
+                                            {{ if .info.enable | default true }}
+                                            <span class="p-2">
+                                                <span 
+                                                    style="cursor: pointer;" 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-original-title={{ .info.content | default (print "Working as a " .job " at " .company ) }}
+                                                >
+                                                    <i class="fas fa-info-circle fa-xs"></i>
+                                                </span>
                                             </span>
-                                        </span>
+                                            {{ end }}
+                                        </div>
+
+                                        {{ if .featuredLink.enable | default false }}
+                                        <div class="py-2 featuredLink">
+                                            <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
+                                                {{ .featuredLink.name | default "Featured Link" }} 
+                                            </a>
+                                        </div>
                                         {{ end }}
                                     </div>
 
-                                    {{ if .featuredLink.enable | default false }}
-                                    <div class="py-2 featuredLink">
-                                        <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
-                                            {{ .featuredLink.name | default "Featured Link" }} 
-                                        </a>
-                                    </div>
-                                    {{ end }}
+                                    {{ .content | markdownify}}
                                 </div>
-
-                                {{ .content | markdownify}}
-                            </div>
+                            {{ end }}
                         {{ end }}
                     </div>
                 </div>

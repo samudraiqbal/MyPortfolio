@@ -6,62 +6,58 @@
             <div class="col-sm-12 col-md-8 col-lg-8 py-5">
                 <div class="experience-container px-3 pt-2">
                     <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">
-                        {{ $prevCompany := "" }}
-                        {{ range $index, $element := .Site.Params.experience.items }}
-                            {{ if ne $prevCompany .company }}
-                                <li class="nav-item px-1 bg-transparent" role="presentation">
-                                    <div 
-                                        class="nav-link{{ if eq $index 0 }} active{{ end }} bg-transparent" 
-                                        aria-selected="true" 
-                                        role="tab" 
-                                        data-bs-toggle="pill"
-                                        id='pills-{{ replace .company " " "-" }}-tab'
-                                        data-bs-target='#pills-{{ replace .company " " "-" }}'
-                                        aria-controls='pills-{{ replace .company " " "-" }}' 
-                                    >
-                                        {{ .company }}
-                                    </div>
-                                </li>
-                            {{ end }}
-                            {{ $prevCompany = .company }}
-                        {{ end }}
-                    </ul>
-                    <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
                         {{ $companies := slice }}
                         {{ range $element := .Site.Params.experience.items }}
                             {{ $company := .company }}
                             {{ if not (in $companies $company) }}
                                 {{ $companies = $companies | append $company }}
-                                <div class="tab-pane fade bg-transparent" role="tabpanel" id='pills-{{ replace $company " " "-" }}' aria-labelledby='pills-{{ replace $company " " "-" }}-tab'>
-                                    {{ range $exp := where .Site.Params.experience.items "company" $company }}
-                                        <div>
-                                            <span class="h4">{{ $exp.job }}</span>
-                                            <small>-</small>
-                                            <a href="{{ $exp.companyUrl }}" target="_blank">{{ $exp.company }}</a>
-                                            <div class="pb-1">
-                                                <small>{{ $exp.date }}</small>
-                                                {{ if $exp.info.enable | default true }}
-                                                    <span class="p-2">
-                                                        <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title={{ $exp.info.content | default (print "Working as a " $exp.job " at " $exp.company ) }}>
-                                                            <i class="fas fa-info-circle fa-xs"></i>
-                                                        </span>
+                                <li class="nav-item px-1 bg-transparent" role="presentation">
+                                    <div 
+                                        class="nav-link bg-transparent" 
+                                        aria-selected="true" 
+                                        role="tab" 
+                                        data-bs-toggle="pill"
+                                        id='{{ replace $company " " "-" }}-tab'
+                                        data-bs-target='#pills-{{ replace $company " " "-" }}'
+                                        aria-controls='{{ replace $company " " "-" }}' 
+                                    >
+                                        {{ $company }}
+                                    </div>
+                                </li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                    <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
+                        {{ range $company := $companies }}
+                            <div class="tab-pane fade bg-transparent" role="tabpanel" id='pills-{{ replace $company " " "-" }}' aria-labelledby='{{ replace $company " " "-" }}-tab'>
+                                {{ range $exp := where .Site.Params.experience.items "company" $company }}
+                                    <div>
+                                        <span class="h4">{{ $exp.job }}</span>
+                                        <small>-</small>
+                                        <a href="{{ $exp.companyUrl }}" target="_blank">{{ $exp.company }}</a>
+                                        <div class="pb-1">
+                                            <small>{{ $exp.date }}</small>
+                                            {{ if $exp.info.enable | default true }}
+                                                <span class="p-2">
+                                                    <span style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title={{ $exp.info.content | default (print "Working as a " $exp.job " at " $exp.company ) }}>
+                                                        <i class="fas fa-info-circle fa-xs"></i>
                                                     </span>
-                                                {{ end }}
-                                            </div>
-
-                                            {{ if $exp.featuredLink.enable | default false }}
-                                                <div class="py-2 featuredLink">
-                                                    <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ $exp.featuredLink.url | default "#" }} target="_blank">
-                                                        {{ $exp.featuredLink.name | default "Featured Link" }} 
-                                                    </a>
-                                                </div>
+                                                </span>
                                             {{ end }}
                                         </div>
 
-                                        {{ $exp.content | markdownify}}
-                                    {{ end }}
-                                </div>
-                            {{ end }}
+                                        {{ if $exp.featuredLink.enable | default false }}
+                                            <div class="py-2 featuredLink">
+                                                <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ $exp.featuredLink.url | default "#" }} target="_blank">
+                                                    {{ $exp.featuredLink.name | default "Featured Link" }} 
+                                                </a>
+                                            </div>
+                                        {{ end }}
+                                    </div>
+
+                                    {{ $exp.content | markdownify}}
+                                {{ end }}
+                            </div>
                         {{ end }}
                     </div>
                 </div>

@@ -7,20 +7,49 @@
                 <div class="experience-container px-3 pt-2">
                     <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">
                         <script>
-                            var companies = []; // Array untuk menyimpan nama perusahaan
+                            var companies = {}; // Objek untuk menyimpan perusahaan dan indeksnya
+                            var activeCompany = ''; // Variabel untuk menyimpan perusahaan aktif
                             {{ range $index, $element := .Site.Params.experience.items }}
                                 var company = "{{ .company }}";
-                                if (!companies.includes(company)) { // Cek jika perusahaan belum ditambahkan
-                                    companies.push(company); // Tambahkan perusahaan ke dalam array
-                                    var isActive = {{ if eq $index 0 }} "active" {{ else }} "" {{ end }}; // Tambahkan kelas active jika index = 0
-                                    document.write('<li class="nav-item px-1 bg-transparent" role="presentation"><div class="nav-link ' + isActive + ' bg-transparent" aria-selected="false" role="tab" data-bs-toggle="pill" id="' + company.replace(/ /g, "-") + '-tab" data-bs-target="#pills-' + company.replace(/ /g, "-") + '" aria-controls="' + company.replace(/ /g, "-") + '">' + company + '</div></li>');
+                                if (!companies[company]) { // Jika perusahaan belum ada dalam objek, tambahkan
+                                    companies[company] = []; // Inisialisasi array untuk perusahaan
                                 }
+                                companies[company].push({ index: {{ $index }} }); // Tambahkan indeks ke dalam array perusahaan
                             {{ end }}
+                            // Fungsi untuk menampilkan tab-pane berdasarkan perusahaan yang dipilih
+                            function showTabPane(company) {
+                                var panes = document.querySelectorAll('.tab-pane'); // Ambil semua elemen tab-pane
+                                panes.forEach(function(pane) {
+                                    pane.classList.remove('show', 'active'); // Hapus kelas show dan active dari semua tab-pane
+                                });
+                                companies[company].forEach(function(item) { // Tampilkan tab-pane untuk perusahaan yang dipilih
+                                    panes[item.index].classList.add('show', 'active'); // Tambahkan kelas show dan active pada tab-pane yang sesuai
+                                });
+                                activeCompany = company; // Perbarui perusahaan aktif
+                            }
+                            // Jalankan fungsi showTabPane untuk perusahaan pertama
+                            showTabPane(Object.keys(companies)[0]);
                         </script>
+                        {{ range $key, $value := .Site.Params.experience.items }}
+                            <li class="nav-item px-1 bg-transparent" role="presentation">
+                                <div 
+                                    class="nav-link bg-transparent" 
+                                    aria-selected="false" 
+                                    role="tab" 
+                                    data-bs-toggle="pill"
+                                    id='{{ replace $key.company " " "-" }}-{{ replace $key.date " " "-" }}-tab'
+                                    data-bs-target='#pills-{{ replace $key.company " " "-" }}-{{ replace $key.date " " "-" }}' 
+                                    aria-controls='{{ replace $key.company " " "-" }}-{{ replace $key.date " " "-" }}'
+                                    onclick="showTabPane('{{ $key.company }}')"
+                                >
+                                    {{ $key.company }}
+                                </div>
+                            </li>
+                        {{ end }}
                     </ul>
                     <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
                         {{ range $index, $element := .Site.Params.experience.items }}
-                            <div class="tab-pane fade {{ if eq $index 0 }}show active{{ else }}bg-transparent{{ end }}" role="tabpanel" id="pills-{{ .company | replaceRE "\\s+" "-" }}" aria-labelledby="{{ .company | replaceRE "\\s+" "-" }}-tab">
+                            <div class="tab-pane fade {{ if in $element.company activeCompany }}show active{{ else }}bg-transparent{{ end }}" role="tabpanel" id="pills-{{ .company | replaceRE "\\s+" "-" }}" aria-labelledby="pills-{{ .company | replaceRE "\\s+" "-" }}-tab">
                                 <div>
                                     <span class="h4">{{ .job }}</span>
                                     <small>-</small>

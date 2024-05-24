@@ -11,9 +11,12 @@
                             {{ range $index, $element := .Site.Params.experience.items }}
                                 var company = "{{ .company }}";
                                 if (!companies[company]) { // Jika perusahaan belum ada dalam objek, tambahkan
-                                    companies[company] = []; // Inisialisasi array untuk perusahaan
+                                    companies[company] = {
+                                        items: [],
+                                        index: $index
+                                    }; // Inisialisasi objek untuk perusahaan
                                 }
-                                companies[company].push({ index: {{ $index }} }); // Tambahkan indeks ke dalam array perusahaan
+                                companies[company].items.push($element); // Tambahkan elemen ke dalam array perusahaan
                             {{ end }}
                             // Variabel untuk menyimpan perusahaan aktif
                             var activeCompany = Object.keys(companies)[0];
@@ -23,64 +26,65 @@
                                 panes.forEach(function(pane) {
                                     pane.classList.remove('show', 'active'); // Hapus kelas show dan active dari semua tab-pane
                                 });
-                                companies[company].forEach(function(item) { // Tampilkan tab-pane untuk perusahaan yang dipilih
-                                    panes[item.index].classList.add('show', 'active'); // Tambahkan kelas show dan active pada tab-pane yang sesuai
-                                });
+                                var pane = document.getElementById('pills-' + company.replace(/\s+/g, '-')); // Dapatkan tab-pane yang sesuai
+                                pane.classList.add('show', 'active'); // Tambahkan kelas show dan active
                                 activeCompany = company; // Perbarui perusahaan aktif
                             }
                             // Jalankan fungsi showTabPane untuk perusahaan pertama
-                            showTabPane(Object.keys(companies)[0]);
+                            showTabPane(activeCompany);
                         </script>
-                        {{ range $key, $value := .Site.Params.experience.items }}
+                        {{ range $company, $details := companies }}
                             <li class="nav-item px-1 bg-transparent" role="presentation">
                                 <div 
                                     class="nav-link bg-transparent" 
                                     aria-selected="false" 
                                     role="tab" 
                                     data-bs-toggle="pill"
-                                    id='{{ replace $key.company " " "-" }}-{{ replace $key.date " " "-" }}-tab'
-                                    data-bs-target='#pills-{{ replace $key.company " " "-" }}-{{ replace $key.date " " "-" }}' 
-                                    aria-controls='{{ replace $key.company " " "-" }}-{{ replace $key.date " " "-" }}'
-                                    onclick="showTabPane('{{ $key.company }}')"
+                                    id='pills-{{ $company | replace " " "-" }}-tab'
+                                    data-bs-target='#pills-{{ $company | replace " " "-" }}' 
+                                    aria-controls='pills-{{ $company | replace " " "-" }}'
+                                    onclick="showTabPane('{{ $company }}')"
                                 >
-                                    {{ $key.company }}
+                                    {{ $company }}
                                 </div>
                             </li>
                         {{ end }}
                     </ul>
                     <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
-                        {{ range $index, $element := .Site.Params.experience.items }}
-                            <div class="tab-pane fade {{ if in $element.company activeCompany }}show active{{ else }}bg-transparent{{ end }}" role="tabpanel" id="pills-{{ .company | replaceRE "\\s+" "-" }}" aria-labelledby="pills-{{ .company | replaceRE "\\s+" "-" }}-tab">
-                                <div>
-                                    <span class="h4">{{ .job }}</span>
-                                    <small>-</small>
-                                    <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
-                                    <div class="pb-1">
-                                        <small>{{ .date }}</small>
-                                        {{ if .info.enable | default true }}
-                                        <span class="p-2">
-                                            <span 
-                                                style="cursor: pointer;" 
-                                                data-bs-toggle="tooltip" 
-                                                data-bs-placement="top" 
-                                                data-bs-original-title={{ .info.content | default (print "Worked as a " .job " at " .company ) }}
-                                            > 
-                                                <i class="fas fa-info-circle fa-xs"></i>
+                        {{ range $company, $details := companies }}
+                            <div class="tab-pane fade" role="tabpanel" id="pills-{{ $company | replaceRE "\\s+" "-" }}" aria-labelledby="pills-{{ $company | replaceRE "\\s+" "-" }}-tab">
+                                {{ range $details.items }}
+                                    <div>
+                                        <span class="h4">{{ .job }}</span>
+                                        <small>-</small>
+                                        <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
+                                        <div class="pb-1">
+                                            <small>{{ .date }}</small>
+                                            {{ if .info.enable | default true }}
+                                            <span class="p-2">
+                                                <span 
+                                                    style="cursor: pointer;" 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="top" 
+                                                    data-bs-original-title={{ .info.content | default (print "Worked as a " .job " at " .company ) }}
+                                                > 
+                                                    <i class="fas fa-info-circle fa-xs"></i>
+                                                </span>
                                             </span>
-                                        </span>
+                                            {{ end }}
+                                        </div>
+                                        {{ if .featuredLink.enable | default false }}
+                                        <div class="py-2 featuredLink">
+                                            <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
+                                                {{ .featuredLink.name | default "Featured Link" }} 
+                                            </a>
+                                        </div>
                                         {{ end }}
                                     </div>
-                                    {{ if .featuredLink.enable | default false }}
-                                    <div class="py-2 featuredLink">
-                                        <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
-                                            {{ .featuredLink.name | default "Featured Link" }} 
-                                        </a>
+                                    <div class="pt-2">
+                                        {{ .content | markdownify}}
                                     </div>
-                                    {{ end }}
-                                </div>
-                                <div class="pt-2">
-                                    {{ .content | markdownify}}
-                                </div>
+                                {{ end }}
                             </div>
                         {{ end }}
                     </div>

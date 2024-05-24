@@ -14,7 +14,7 @@
                         {{ else }}
                             {{/* Ambil slice saat ini dan tambahkan item baru */}}
                             {{ $currentItems := index $companies $companyName }}
-                            {{ $newSlice := append $currentItems . }}
+                            {{ $newSlice := append $currentItems (dict "job" .job "companyUrl" .companyUrl "company" .company "date" .date "content" .content) }}
                             {{ $companies = merge $companies (dict $companyName $newSlice) }}
                         {{ end }}
                     {{ end }}
@@ -45,29 +45,10 @@
                                         <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
                                         <div class="pb-1">
                                             <small>{{ .date }}</small>
-                                            {{ if .info.enable | default true }}
-                                            <span class="p-2">
-                                                <span 
-                                                    style="cursor: pointer;" 
-                                                    data-bs-toggle="tooltip" 
-                                                    data-bs-placement="top" 
-                                                    data-bs-original-title={{ .info.content | default (print "Worked as a " .job " at " .company ) }}
-                                                > 
-                                                    <i class="fas fa-info-circle fa-xs"></i>
-                                                </span>
-                                            </span>
-                                            {{ end }}
                                         </div>
-                                        {{ if .featuredLink.enable | default false }}
-                                        <div class="py-2 featuredLink">
-                                            <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
-                                                {{ .featuredLink.name | default "Featured Link" }} 
-                                            </a>
+                                        <div class="pt-2">
+                                            {{ .content | markdownify }}
                                         </div>
-                                        {{ end }}
-                                    </div>
-                                    <div class="pt-2">
-                                        {{ .content | markdownify}}
                                     </div>
                                 {{ end }}
                             </div>

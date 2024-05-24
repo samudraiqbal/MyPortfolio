@@ -9,10 +9,13 @@
                     {{ range .Site.Params.experience.items }}
                         {{ $companyName := .company }}
                         {{ if not (isset $companies $companyName) }}
+                            {{/* Inisialisasi slice baru untuk perusahaan yang belum ada */}}
                             {{ $companies = merge $companies (dict $companyName (slice .)) }}
                         {{ else }}
+                            {{/* Ambil slice saat ini dan tambahkan item baru */}}
                             {{ $currentItems := index $companies $companyName }}
-                            {{ $companies = merge $companies (dict $companyName (append $currentItems .)) }}
+                            {{ $newSlice := append $currentItems . }}
+                            {{ $companies = merge $companies (dict $companyName $newSlice) }}
                         {{ end }}
                     {{ end }}
                     <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">

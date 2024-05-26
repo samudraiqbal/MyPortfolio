@@ -6,121 +6,63 @@
             <div class="col-sm-12 col-md-8 col-lg-8 py-5">
                 <div class="experience-container px-3 pt-2">
                     <ul class="nav nav-pills mb-3 bg-transparent primary-font" id="pills-tab" role="tablist">
-                        {{ range $index, $element := .Site.Params.experience.items }}
-                        {{ if (eq $index 0) }}
+                        <!-- Tab untuk setiap pekerjaan -->
                         <li class="nav-item px-1 bg-transparent" role="presentation">
-                            <div 
-                                class="nav-link active bg-transparent" 
-                                aria-selected="true" 
-                                role="tab" 
-                                data-bs-toggle="pill"
-                                id='{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'
-                                data-bs-target='#pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}'
-                                aria-controls='{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' 
-                            >
-                                {{ .company }}
+                            <div class="nav-link active bg-transparent" aria-selected="true" role="tab" data-bs-toggle="pill"
+                                id="facebook-jan-2022-present-tab"
+                                data-bs-target="#pills-facebook-jan-2022-present"
+                                aria-controls="pills-facebook-jan-2022-present">
+                                Facebook
                             </div>
                         </li>
-                        {{ else }}
                         <li class="nav-item px-1 bg-transparent" role="presentation">
-                            <div 
-                                class="nav-link bg-transparent" 
-                                aria-selected="true" 
-                                role="tab" 
-                                data-bs-toggle="pill"
-                                id='{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'
-                                data-bs-target='#pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}' 
-                                aria-controls='{{ replace .company " " "-" }}-{{ replace .date " " "-" }}'
-                            >
-                                {{ .company }}
+                            <div class="nav-link bg-transparent" aria-selected="false" role="tab" data-bs-toggle="pill"
+                                id="apple-jan-2020-aug-2020-tab"
+                                data-bs-target="#pills-apple-jan-2020-aug-2020"
+                                aria-controls="pills-apple-jan-2020-aug-2020">
+                                Apple
                             </div>
                         </li>
-                        {{ end }}
-                        {{ end }}
+                        <!-- Tambahkan lebih banyak tab sesuai kebutuhan -->
                     </ul>
                     <div class="tab-content pb-5 pt-2 bg-transparent primary-font" id="pills-tabContent">
-                        {{ range $index, $element := .Site.Params.experience.items }}
-                        {{ if (eq $index 0) }}
-                        <div 
-                            class="tab-pane fade show active bg-transparent" 
-                            role="tabpanel"
-                            id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}'
-                            aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'
-                        >
+                        <!-- Konten untuk setiap tab -->
+                        <div class="tab-pane fade show active bg-transparent" role="tabpanel"
+                            id="pills-facebook-jan-2022-present"
+                            aria-labelledby="facebook-jan-2022-present-tab">
                             <div>
-                                <span class="h4">{{ .job }}</span>
+                                <span class="h4">Senior Software Developer</span>
                                 <small>-</small>
-                                <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
+                                <a href="https://example.com" target="_blank">Facebook</a>
                                 <div class="pb-1">
-                                    <small>{{ .date }}</small>
-                                    {{ if .info.enable | default true }}
-                                    <span class="p-2">
-                                        <span 
-                                            style="cursor: pointer;" 
-                                            data-bs-toggle="tooltip" 
-                                            data-bs-placement="top" 
-                                            data-bs-original-title={{ .info.content | default (print "Working as a " .job " at " .company ) }}
-                                        >
-                                            <i class="fas fa-info-circle fa-xs"></i>
-                                        </span>
-                                    </span>
-                                    {{ end }}
+                                    <small>Jan 2022 - present</small>
                                 </div>
-
-                                {{ if .featuredLink.enable | default false }}
                                 <div class="py-2 featuredLink">
-                                    <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
-                                        {{ .featuredLink.name | default "Featured Link" }} 
+                                    <a class="p-2 px-4 btn btn-outline-primary btn-sm" href="https://example.com" target="_blank">
+                                        View the project
                                     </a>
                                 </div>
-                                {{ end }}
+                                <div>
+                                    I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA.
+                                </div>
                             </div>
-
-                            {{ .content | markdownify}}
                         </div>
-                        {{ else }}
-                        <div 
-                            class="tab-pane fade bg-transparent" 
-                            role="tabpanel"
-                            id='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}'
-                            aria-labelledby='pills-{{ replace .company " " "-" }}-{{ replace .date " " "-" }}-tab'
-                        >
+                        <div class="tab-pane fade bg-transparent" role="tabpanel"
+                            id="pills-apple-jan-2020-aug-2020"
+                            aria-labelledby="apple-jan-2020-aug-2020-tab">
                             <div>
-                                <span class="h4">{{ .job }}</span>
+                                <span class="h4">Junior Software Developer</span>
                                 <small>-</small>
-                                <a href="{{ .companyUrl }}" target="_blank">{{ .company }}</a>
-                                
+                                <a href="https://example.com" target="_blank">Apple</a>
                                 <div class="pb-1">
-                                    <small>{{ .date }}</small>
-                                    {{ if .info.enable | default true }}
-                                    <span class="p-2">
-                                        <span 
-                                            style="cursor: pointer;" 
-                                            data-bs-toggle="tooltip" 
-                                            data-bs-placement="top" 
-                                            data-bs-original-title={{ .info.content | default (print "Worked as a " .job " at " .company ) }}
-                                        > 
-                                            <i class="fas fa-info-circle fa-xs"></i>
-                                        </span>
-                                    </span>
-                                    {{ end }}
+                                    <small>Jan 2020 - Aug 2020</small>
                                 </div>
-                                
-                                {{ if .featuredLink.enable | default false }}
-                                <div class="py-2 featuredLink">
-                                    <a class="p-2 px-4 btn btn-outline-primary btn-sm" href={{ .featuredLink.url | default "#" }} target="_blank">
-                                        {{ .featuredLink.name | default "Featured Link" }} 
-                                    </a>
+                                <div>
+                                    I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA.
                                 </div>
-                                {{ end }}
-                            </div>
-
-                            <div class="pt-2">
-                                {{ .content | markdownify}}
                             </div>
                         </div>
-                        {{ end }}
-                        {{ end }}
+                        <!-- Tambahkan lebih banyak konten tab sesuai kebutuhan -->
                     </div>
                 </div>
             </div>
@@ -128,3 +70,6 @@
     </div>
 </section>
 {{ end }}
+```
+</rewritten_file><|eot_id|>
+

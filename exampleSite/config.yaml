@@ -150,7 +150,7 @@ params:
   about:
     enable: true
     title: "About Me"
-    image: "/images/me.png"
+    image: "/images/me.jpg"
     content: |-
       I am a software developer with a passion for web development. I am a graduate of Binus University with a major in Information Systems and SMK Telkom Malang with a major in Software Engineering.
 
@@ -162,9 +162,11 @@ params:
         - "HTML"
         - "CSS"
         - "JavaScript"
-        - "React"
-        - "Node"
-        - "Express"
+        - "Node.JS"
+        - "Java"
+        - "Kotlin"
+        - "MySQL"
+        - "Katalon Studio"
 
   # Experience
   experience:
